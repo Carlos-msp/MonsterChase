@@ -5,16 +5,23 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Parameters
     [SerializeField]
-    private float moveForce = 10f;
+    private float moveSpeed = 10f;
     [SerializeField]
-    private float jumpForce = 11f;
+    private float jumpVelocity = 20f;
 
+    // Physics
     private float movementX;
+    // Components
     private Rigidbody2D selfRigidBody;
     private SpriteRenderer selfSpriteRenderer;
     private Animator selfAnimator;
+    // External Variables and Strings
     private const string WALK_ANIMATION_VARIABLE = "Walk";
+    private const string GROUND_TAG = "Walkable";
+    // State Variables
+    private bool isGrounded = false;
 
     private void Awake()
     {
@@ -37,13 +44,24 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += new Vector3(movementX, 0f, 0f) * Time.deltaTime * moveForce;
+        transform.position += new Vector3(movementX, 0f, 0f) * Time.deltaTime * moveSpeed;
         AnimatePlayer();
     }
 
     void CaptureInput()
     {
         movementX = Input.GetAxisRaw("Horizontal");
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+    }
+
+    private void Jump()
+    {
+        if (!isGrounded) { return; }
+        selfRigidBody.velocity = selfRigidBody.velocity + new Vector2(0f, jumpVelocity);
+        isGrounded = false;
     }
 
     void AnimatePlayer()
@@ -51,14 +69,25 @@ public class Player : MonoBehaviour
         if (movementX > 0)
         {
             selfAnimator.SetBool(WALK_ANIMATION_VARIABLE, true);
+            selfSpriteRenderer.flipX = false;
         }
         else if (movementX < 0)
         {
             selfAnimator.SetBool(WALK_ANIMATION_VARIABLE, true);
+            selfSpriteRenderer.flipX = true;
         }
         else
         {
             selfAnimator.SetBool(WALK_ANIMATION_VARIABLE, false);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collided)
+    {
+        Debug.Log("Collided with " + collided);
+        if (collided.gameObject.tag.Equals(GROUND_TAG)) {
+            isGrounded = true;
+        }
+    }
+
 }
