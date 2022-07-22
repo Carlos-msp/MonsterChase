@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Player : MonoBehaviour
     private float moveSpeed = 10f;
     [SerializeField]
     private float jumpVelocity = 20f;
+    [MarshalAs(UnmanagedType.LPUTF8Str)]
+    string oi = "Olá Cabrão!";
 
     // Physics
     private float movementX;

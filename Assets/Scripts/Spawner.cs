@@ -5,8 +5,9 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] spawnTarget;
-    private int randomIndex;
+    private GameObject[] enemyTypes;
+    [SerializeField]
+    private Transform[] spawnPositions;
 
 
     // Start is called before the first frame update
@@ -24,6 +25,12 @@ public class Spawner : MonoBehaviour
     IEnumerator SpawnMonsters() {
         yield return new WaitForSeconds(Random.Range(1,5));
 
-        randomIndex = Random.Range(0, spawnTarget.Length);
+        int randomIndex = Random.Range(0, enemyTypes.Length);
+        GameObject spawnedMonster = Instantiate(enemyTypes[randomIndex]);
+        randomIndex = Random.Range(0, spawnPositions.Length);
+        Transform spawnPos = spawnPositions[randomIndex];
+
+        spawnedMonster.transform.position = spawnPos.position;
+        spawnedMonster.GetComponent<Enemy>().speed = Random.Range(1f, 3f);
     }
 }
