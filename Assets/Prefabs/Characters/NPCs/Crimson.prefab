@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6127963848167779105}
   - component: {fileID: 5376327940760990129}
   - component: {fileID: 8335334886509167453}
+  - component: {fileID: 3583672239970152811}
   m_Layer: 0
   m_Name: Crimson
   m_TagString: Enemy
@@ -154,3 +155,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8873973, y: 2.11}
   m_EdgeRadius: 0
+--- !u!114 &3583672239970152811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2648439089444313387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9e6669dccbf4ae1bfd6c7459da18b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7

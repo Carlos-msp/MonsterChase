@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 59182280362837302}
   - component: {fileID: 9030316187775397207}
   - component: {fileID: 8611090946654960036}
+  - component: {fileID: 8917182768234861421}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -154,3 +155,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8873973, y: 2.11}
   m_EdgeRadius: 0
+--- !u!114 &8917182768234861421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711501858979035027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9e6669dccbf4ae1bfd6c7459da18b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
