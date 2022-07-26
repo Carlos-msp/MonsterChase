@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
     private float moveSpeed = 10f;
     [SerializeField]
     private float jumpVelocity = 20f;
-    [MarshalAs(UnmanagedType.LPUTF8Str)]
-    string oi = "Olá Cabrão!";
 
     // Physics
     private float movementX;
@@ -87,7 +85,6 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collided)
     {
-        Debug.Log("Collided with " + collided);
         if (collided.gameObject.tag.Equals(GROUND_TAG)) {
             isGrounded = true;
         }
